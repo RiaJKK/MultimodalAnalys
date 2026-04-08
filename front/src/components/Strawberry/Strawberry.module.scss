@@ -1,0 +1,208 @@
+
+.straw_box {
+    position: relative;
+}
+.straw {
+    position: absolute;
+    // margin-left: 150px;
+    // margin-top: 150px;
+    top: 150px;
+    left: 150px;
+    width: 100px;
+    height: 100px;
+    transform: rotate(45deg);
+    border-radius: 50% 50% 10px 50%;
+    border: 2px solid black;
+    animation-name: down_str_body;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    background-color: rgb(224, 40, 59);
+
+}
+
+.straw_in_chocolate {
+    position: absolute;
+    // margin-left: 150px;
+    // margin-top: 150px;
+    // margin-top: 20px;
+    top: 160px;
+    left: 151px;
+    width: 102px;
+    height: 102px;
+    transform: rotate(45deg);
+    border-radius: 100% 50% 10px 50%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    animation-name: down_str_body_chocolate;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+
+}
+.lists{
+    display: flex;
+}
+.petal_left {
+    position: absolute;
+    top: 116px;
+    left: 142px;
+    width: 60px;
+    height: 30px;
+    border-radius: 0% 100%;
+    border: 2px solid black;
+    transform: rotate(-deg);
+    animation-name: down;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    background-color: rgb(49, 104, 6);
+
+
+
+
+}
+.petal_right {
+    position: absolute;
+    top: 116px;
+    left: 205px;
+    width: 60px;
+    height: 30px;
+    border-radius: 100% 0;
+    border: 2px solid black;
+    transform: rotate(360deg);
+    animation-name: down;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    background-color: rgb(49, 104, 6);
+
+
+
+
+}
+
+.box_chocolate {
+    position: absolute;
+    left: 125px;
+    top: 300px;
+    border: 2px solid black;
+    border-width: 1px 1px 1px 1px;
+    width: 150px;
+    height: 157px;
+    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
+}
+.strawberry {
+    // animation-name: down;
+    animation-iteration-count: 1;
+    animation-duration: 4s;
+    position: relative;
+}
+
+@keyframes down {
+    from {
+
+    }
+    50% {
+        top: 300px;
+    }
+    to {
+
+    }
+    
+}
+
+@keyframes down_str_body {
+    from {
+
+    }
+    50% {
+        // background-color: red;
+        top: 330px;
+    }
+
+    to {
+
+    }
+    
+}
+
+@keyframes down_str_body_chocolate {
+    from {
+
+    }
+    49%{
+        background-color: rgba(255, 0, 0, 0);
+        border: 2px solid rgba(255, 0, 0, 0);
+    }
+    50% {
+        background-color: rgb(255, 212, 148);
+        border: 2px solid rgb(0, 0, 0);
+
+        top: 333px;
+    }
+
+    to {
+        background-color: rgb(255, 212, 148);
+        border: 2px solid rgba(0, 0, 0);
+
+    }
+    
+}
+// .straw2 {
+//     position: relative;
+//     top: -30px;
+//     left: 16px;
+//     width: 80px;
+//     height: 50px;
+//     background-color: red;
+//     transform: rotate(225deg) skew(30deg, 0deg);
+//     border-radius: 50% 50% 10px 50%;
+    
+
+// }
+
+.for {
+
+    display: inline-block;
+    margin: 0 0 10px 0px;
+}
+.you {
+    margin: 0 0 0 0;
+}
+.for_you{
+    height: 30px;
+    position: relative;
+    top: 60px;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(236, 39, 39);
+}
+
+// .dot {
+//     width: 6px;
+//     height: 6px;
+//     background-color: black;
+//     border-radius: 10px 2px 10px 2px;
+// }
+#first_dot {
+    position: relative;
+    top: 10px;
+    left: 8px;
+    transform: rotate(140deg);
+}
+#second_dot {
+    position: relative;
+    top: 10px;
+    left: 8px;
+    transform: rotate(140deg);
+}
+#third_dot {
+    position: relative;
+    top: 10px;
+    left: 40px;
+    transform: rotate(140deg);
+}
+#four_dot {
+    position: relative;
+    top: 10px;
+    left: 60px;
+    transform: rotate(140deg);
+}
