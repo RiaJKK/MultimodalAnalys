@@ -2,3 +2,4 @@ astapi
 uvicorn
 python-multipart
 faster_whisper
+llama-cpp-python
