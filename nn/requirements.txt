@@ -1,4 +1,4 @@
-astapi
+Fastapi
 uvicorn
 python-multipart
 faster_whisper
