@@ -1,19 +1,16 @@
 import { useState } from 'react'
 import styles from './App.module.scss'
 import VideoUpload from './components/VideoUpload/VideoUpload'
+import Header from './components/Header'
 
 function App() {
 
   return (
     <>
-      <div className={styles.header}>
-        <div>
-        <h1> MAVIS </h1>
-
-        </div>
-      </div>
-      <VideoUpload/>
+      <Header />
+      <VideoUpload />
     </>
+
   )
 }
 export default App

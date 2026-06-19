@@ -1,166 +1,451 @@
+// 🎨 Variables & Theme
+$primary: #6366f1;
+$primary-hover: #4f46e5;
+$secondary: #f8fafc;
+$text-primary: #1e293b;
+$text-secondary: #64748b;
+$text-muted: #94a3b8;
+$border: #e2e8f0;
+$bg-card: #ffffff;
+$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-full: 9999px;
+$transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+// 🌐 Base Layout
 .video_upload {
   display: flex;
-  flex-direction: row;
-  min-height: 87vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-family: 'Inter', 'Arimo', system-ui, -apple-system, sans-serif;
+  color: $text-primary;
+  -webkit-font-smoothing: antialiased;
 }
 
+// 📋 Sidebar
 .left_bar {
+  width: 280px;
+  min-width: 280px;
+  background: $bg-card;
+  border-right: 1px solid $border;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  width: 20%;
-  border-right: 1px solid rgba(155, 153, 153, 0.489);
-  padding: 16px 0;
-}
+  gap: 16px;
+  position: relative;
 
-.new_chat_btn {
-  margin: 0 12px 16px;
-  padding: 10px 14px;
-  background: none;
-  border: 1px solid rgba(199, 199, 199, 0.558);
-  border-radius: 6px;
-  font-size: 13px;
-  color: #444;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-  font-family: "Arimo", sans-serif;
-
-  &:hover {
-    background: #f5f5f5;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, $border, transparent);
   }
 }
 
-.chat_list {
+// ✨ New Chat Button
+.new_chat_btn {
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, $primary, $primary-hover);
+  color: white;
+  border: none;
+  border-radius: $radius-md;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition;
+  box-shadow: $shadow-md;
+  font-family: inherit;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-lg;
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &::before {
+    content: '+';
+    font-size: 18px;
+    font-weight: 300;
+  }
 }
 
+// 📚 Chat List
+.chat_list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 4px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $text-muted;
+    border-radius: $radius-full;
+    &:hover {
+      background: $text-secondary;
+    }
+  }
+}
+
+// 💬 Chat Item
 .chat_item {
   display: flex;
   flex-direction: column;
-  padding: 10px 16px;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: $radius-md;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: $transition;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
-    background: #f9f9f9;
+    background: $secondary;
+    transform: translateX(2px);
   }
 
   &.active {
-    background: #f0f0f0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(79, 70, 229, 0.08));
+    border-left: 3px solid $primary;
+    padding-left: 11px;
+
+    .chat_name {
+      color: $primary;
+      font-weight: 500;
+    }
+    .video_count {
+      color: $text-secondary;
+    }
   }
 }
 
+// ✏️ Editable Name
 .chat_name {
   font-size: 14px;
-  color: #222;
+  color: $text-primary;
+  font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.15s;
 }
 
 .name_input {
   font-size: 14px;
-  color: #222;
+  color: $text-primary;
   border: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 2px solid $primary;
   outline: none;
   background: transparent;
   width: 100%;
-  font-family: "Arimo", sans-serif;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 2px 0;
+
+  &::placeholder {
+    color: $text-muted;
+  }
 }
 
+// 🔢 Video Count Badge
 .video_count {
   font-size: 11px;
-  color: #aaa;
-  margin-top: 3px;
+  color: $text-muted;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: $primary;
+    border-radius: 50%;
+    opacity: 0.6;
+  }
 }
 
+// 🖼️ Main Area
 .main_area {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 40px 60px;
+  padding: 40px 48px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
+// 🌌 Empty State
 .empty_state {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #bbb;
-  font-size: 15px;
-}
+  color: $text-muted;
+  text-align: center;
+  gap: 24px;
+  animation: fadeIn 0.4s ease-out;
 
-.main_header {
-  margin-bottom: 32px;
+  p {
+    font-size: 16px;
+    max-width: 320px;
+    line-height: 1.5;
+  }
 
-  h2 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 500;
-    color: #222;
+  &::before {
+    content: '🎬';
+    font-size: 64px;
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
   }
 }
 
+// 📰 Header
+.main_header {
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $border;
+
+  h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: $text-primary;
+    letter-spacing: -0.025em;
+  }
+}
+
+// 📤 Upload Section
 .upload_section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 32px;
+  padding: 20px;
+  background: $bg-card;
+  border: 1px dashed $border;
+  border-radius: $radius-lg;
+  transition: $transition;
+
+  &:hover {
+    border-color: $primary;
+    background: rgba(99, 102, 241, 0.02);
+  }
 }
 
+// 🎯 Upload Button
 .upload_btn {
-  padding: 10px 20px;
-  background: #222;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, $text-primary, #334155);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: $radius-md;
   font-size: 14px;
-  font-family: "Arimo", sans-serif;
+  font-weight: 500;
+  font-family: inherit;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: $transition;
+  box-shadow: $shadow-md;
 
   &:hover:not(:disabled) {
-    background: #444;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    filter: brightness(1.1);
   }
 
   &:disabled {
-    background: #aaa;
-    cursor: default;
+    background: $text-muted;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: $shadow-sm;
+  }
+
+  &::before {
+    content: '📁';
+    font-size: 16px;
   }
 }
 
+// 💬 Message
 .message {
   font-size: 13px;
-  color: #666;
-  margin: 0;
+  color: $text-primary;
+  margin: 20px;
+  line-height: 1.5;
+  padding: 12px 16px;
+  background: $bg-card;
+  border-radius: $radius-sm;
+  border-left: 3px solid $primary;
+  border: 1px solid $border;
+  animation: slideIn 0.3s ease-out;
+  white-space: pre-line;
 }
 
-.hiddenInput {
-  display: none;
-}
-
+// 🎞️ Video List
 .video_list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  width: 100%;
 }
 
+// 🎬 Video Item
 .video_item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border: 1px solid rgba(199, 199, 199, 0.558);
-  border-radius: 6px;
+  gap: 14px;
+  padding: 14px 18px;
+  background: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-md;
   font-size: 14px;
-  color: #333;
+  color: $text-primary;
+  transition: $transition;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: $shadow-md;
+    transform: translateX(4px);
+  }
+
+  &::before {
+    content: '';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(79, 70, 229, 0.15));
+    border-radius: $radius-sm;
+    color: $primary;
+    font-size: 14px;
+  }
 }
 
 .video_icon {
-  color: #bbb;
-  font-size: 11px;
+  color: $primary;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+}
+
+// 🌀 Loading Spinner (optional utility)
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 8px;
+}
+
+// 🎞️ Animations
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+// 📱 Responsive
+@media (max-width: 1024px) {
+  .video_upload {
+    flex-direction: column;
+  }
+  .left_bar {
+    width: 100%;
+    min-width: auto;
+    max-height: 30vh;
+    border-right: none;
+    border-bottom: 1px solid $border;
+  }
+  .main_area {
+    padding: 24px;
+  }
+}
+
+// 🌙 Dark Mode — управляется классом .dark на <html>, а не системной темой
+:global(.dark) {
+  $dark-bg: #0f172a;
+  $dark-card: #1e293b;
+  $dark-border: #334155;
+  $dark-text: #f1f5f9;
+  $dark-text-muted: #64748b;
+
+  .video_upload {
+    background: linear-gradient(135deg, $dark-bg, #1e293b);
+    color: $dark-text;
+  }
+  .left_bar, .video_item, .upload_section {
+    background: $dark-card;
+    border-color: $dark-border;
+  }
+  .main_area {
+    background: transparent;
+  }
+  .chat_name, .video_count {
+    color: $dark-text;
+  }
+  .message {
+    background: $dark-card;
+    border-color: $dark-border;
+    color: $dark-text;
+  }
+  .video_count {
+    color: $dark-text-muted;
+  }
+  .empty_state {
+    color: $dark-text-muted;
+  }
 }

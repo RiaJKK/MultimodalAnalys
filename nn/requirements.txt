@@ -1,5 +1,13 @@
-Fastapi
+fastapi
 uvicorn
 python-multipart
-faster_whisper
+faster-whisper
 llama-cpp-python
+opencv-python
+paddleocr
+paddlepaddle
+bertopic
+sentence-transformers
+transformers
+torch
+numpy
